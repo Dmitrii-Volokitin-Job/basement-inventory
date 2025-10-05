@@ -444,11 +444,13 @@
     <!-- Box Details Panel -->
     <aside id="detailsPanel" class="w-80 bg-base-200 border-l border-base-300 fixed right-0 top-0 h-full hidden overflow-y-auto" style="padding-top: 85px;">
       <div class="overflow-y-auto h-full">
-        <div class="flex items-center justify-between p-3 border-b border-base-300 bg-base-200 sticky top-0 z-10">
+        <div class="p-3">
+        <!-- Box Header -->
+        <div class="flex items-center justify-between mb-3 pb-3 border-b border-base-300">
           <h2 id="detailsBoxId" class="text-lg font-bold badge badge-secondary badge-lg"></h2>
           <button id="closePanelBtn" class="btn btn-ghost btn-sm btn-circle">✖</button>
         </div>
-        <div class="p-3">
+
         <!-- Box Description -->
         <div class="mb-2">
           <label class="label py-0.5">
@@ -726,7 +728,7 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3" id="boxes-${shelf.id}">
+            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3" id="boxes-${shelf.id}">
               ${renderShelfBoxes(shelfBoxes, searchTerm)}
             </div>
           </div>
