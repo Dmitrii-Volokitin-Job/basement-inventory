@@ -1,0 +1,16 @@
+{
+  "name": "basement-inventory",
+  "version": "1.0.0",
+  "description": "Web-based inventory system for tracking storage boxes in a basement",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["inventory", "storage", "basement", "boxes"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
