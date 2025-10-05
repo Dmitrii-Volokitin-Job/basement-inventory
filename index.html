@@ -389,6 +389,10 @@
           <button id="themeToggle" class="btn btn-xs btn-ghost" title="Toggle theme">
             <span id="themeIcon" class="text-base">🌙</span>
           </button>
+          <button id="addShelfBtn" class="btn btn-xs btn-primary">
+            <span>➕</span>
+            <span class="hidden sm:inline ml-1">Shelf</span>
+          </button>
           <button id="importBtn" class="btn btn-xs btn-secondary">
             <span>📥</span>
             <span class="hidden sm:inline ml-1">Import</span>
@@ -396,10 +400,6 @@
           <button id="exportBtn" class="btn btn-xs btn-accent">
             <span>📤</span>
             <span class="hidden sm:inline ml-1">Export</span>
-          </button>
-          <button id="addShelfBtn" class="btn btn-xs btn-primary">
-            <span>➕</span>
-            <span class="hidden sm:inline ml-1">Shelf</span>
           </button>
         </div>
       </div>
@@ -436,7 +436,8 @@
       <div id="shelvesContainer"></div>
       <div id="noResults" class="hidden text-center py-12 text-base-content/50">
         <div class="text-6xl mb-4">🔍</div>
-        <p class="text-xl">No results found</p>
+        <p id="noResultsMessage" class="text-xl">No results found</p>
+        <p id="noResultsHint" class="text-sm mt-2 hidden">Try a different search term or clear the filter</p>
       </div>
     </main>
 
@@ -678,6 +679,17 @@
       container.innerHTML = '';
 
       if (filteredShelves.length === 0) {
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        const noResultsHint = document.getElementById('noResultsHint');
+
+        if (searchTerm) {
+          noResultsMessage.textContent = `No results found for "${searchTerm}"`;
+          noResultsHint.classList.remove('hidden');
+        } else {
+          noResultsMessage.textContent = 'No shelves yet';
+          noResultsHint.classList.add('hidden');
+        }
+
         noResults.classList.remove('hidden');
         return;
       }
@@ -724,19 +736,12 @@
     }
 
     function renderShelfBoxes(boxes, searchTerm = '') {
-      if (boxes.length === 0) {
-        return '<div class="col-span-4 text-center text-base-content/50 py-4">No boxes yet</div>';
-      }
-
-      return boxes.map(box => {
-        const isSelected = box.id === currentBoxId;
-        const photo = box.photo || '';
-        const boxItems = data.items.filter(i => i.boxId === box.id);
-        const itemCount = boxItems.length;
-
-        let highlight = '';
-        if (searchTerm) {
-          const lowerSearch = searchTerm.toLowerCase();
+      // Filter boxes when search is active
+      let filteredBoxes = boxes;
+      if (searchTerm) {
+        const lowerSearch = searchTerm.toLowerCase();
+        filteredBoxes = boxes.filter(box => {
+          const boxItems = data.items.filter(i => i.boxId === box.id);
           const boxMatch = box.id.toLowerCase().includes(lowerSearch) ||
                           box.description.toLowerCase().includes(lowerSearch);
           const itemMatch = boxItems.some(item =>
@@ -744,10 +749,19 @@
             item.notes.toLowerCase().includes(lowerSearch) ||
             item.tags.toLowerCase().includes(lowerSearch)
           );
-          if (boxMatch || itemMatch) {
-            highlight = 'ring-2 ring-warning';
-          }
-        }
+          return boxMatch || itemMatch;
+        });
+      }
+
+      if (filteredBoxes.length === 0) {
+        return '<div class="col-span-4 text-center text-base-content/50 py-4">No boxes match</div>';
+      }
+
+      return filteredBoxes.map(box => {
+        const isSelected = box.id === currentBoxId;
+        const photo = box.photo || '';
+        const boxItems = data.items.filter(i => i.boxId === box.id);
+        const itemCount = boxItems.length;
 
         const itemsTooltip = boxItems.length > 0 ? boxItems.map(item => `
           <div class="mb-2 pb-2 border-b border-base-content/10 last:border-0 last:mb-0 last:pb-0">
@@ -763,7 +777,7 @@
         `).join('') : '<div class="text-xs text-base-content/50">No items yet</div>';
 
         return `
-          <div class="box-card card bg-base-300 hover:shadow-md cursor-pointer smooth-transition ${isSelected ? 'ring-2 ring-primary shadow-md' : ''} ${highlight}" data-box-id="${box.id}">
+          <div class="box-card card bg-base-300 hover:shadow-md cursor-pointer smooth-transition ${isSelected ? 'ring-2 ring-primary shadow-md' : ''}" data-box-id="${box.id}">
             <div class="box-tooltip">
               <div class="font-bold text-sm mb-2">${box.id}</div>
               <div class="text-xs text-base-content/70 mb-3">${box.description || 'No description'}</div>
@@ -840,14 +854,24 @@
       const container = document.getElementById('itemsList');
 
       if (items.length === 0) {
-        container.innerHTML = '<div class="text-center text-base-content/50 py-4">No items yet</div>';
+        if (searchTerm) {
+          container.innerHTML = `
+            <div class="text-center text-base-content/50 py-4">
+              <div class="text-4xl mb-2">🔍</div>
+              <p class="font-medium">No items found for "${searchTerm}"</p>
+              <p class="text-xs mt-1">Try a different search term</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = '<div class="text-center text-base-content/50 py-4">No items yet</div>';
+        }
         return;
       }
 
       container.innerHTML = items.map(item => `
         <div class="card bg-base-300 p-3 border border-base-content/10 hover:border-primary/50 smooth-transition">
           <div class="flex items-start justify-between mb-2">
-            <span class="badge badge-xs badge-accent font-mono">${item.id}</span>
+            <span class="badge badge-xs badge-primary font-mono">${item.id}</span>
             <button class="btn btn-xs btn-error btn-circle delete-item-btn" data-item-id="${item.id}">🗑️</button>
           </div>
           <div class="space-y-2">
