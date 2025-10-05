@@ -1,230 +1,167 @@
 # 🏠 Basement Inventory System
 
-A simple, web-based inventory management system for tracking storage boxes in your basement. Access it from any device on your local network!
+A modern, web-based inventory management system for tracking storage boxes in your basement. Beautiful UI with dark/light themes, photo support, and powerful search capabilities. Access it from any device on your local network!
 
-## Features
+## ✨ Features
 
-- 📦 **Organize by Shelves**: Create multiple shelves to organize your storage
-- 🖼️ **Photo Support**: Add photos to boxes (stored as base64 in JSON)
-- 🔍 **Powerful Search**: Search across shelves, boxes, and items
-- 📊 **Dashboard Statistics**: See total shelves, boxes, and storage usage at a glance
-- 💾 **Auto-Save**: All changes saved automatically
-- 📤 **Export/Import**: Backup and restore your inventory data
-- 🌐 **Network Access**: Share with multiple users on your local network
-- 🌙 **Dark Mode**: Easy on the eyes with a modern dark interface
+### Core Features
+- 📦 **Smart Organization**: Create shelves, boxes, and items in a hierarchical structure
+- 🖼️ **Photo Support**: Add photos to boxes for quick visual identification
+- 🔍 **Powerful Search**:
+  - Global search across all shelves, boxes, and items
+  - Item-level search within boxes
+  - Real-time search with highlighting
+- 💾 **Auto-Save**: All changes saved automatically to local JSON storage
+- 📤 **Backup & Restore**: Export/Import your inventory as JSON
 
-## Technology Stack
+### User Experience
+- 🌙 **Theme Toggle**: Switch between dark and light themes
+- 📱 **Responsive Design**: Works on desktop, tablet, and mobile
+- 🎯 **Item Tooltips**: Hover over boxes to see all contents
+- 🗑️ **Smart Deletion**: Confirmation dialogs prevent accidental data loss
+- 📊 **Live Statistics**: Dashboard shows total shelves and boxes
+- 🌐 **Network Access**: Multi-device access on local network
 
-- **Frontend**: HTML + Tailwind CSS + daisyUI
-- **Backend**: Node.js + Express
-- **Database**: Local JSON file (no database installation needed)
-- **No build tools required**: Just run and go!
+### Technical Features
+- ⚡ **No Build Required**: Pure HTML/CSS/JS frontend
+- 🚀 **Fast & Lightweight**: Minimal dependencies
+- 🔒 **Local Storage**: All data stays on your machine
+- 🎨 **Modern UI**: Built with Tailwind CSS & DaisyUI
 
-## Prerequisites
+## 🖼️ Screenshots
 
-You need to have Node.js installed on your computer.
+The app features a clean, modern interface with:
+- Shelf-based organization with visual box cards
+- Side panel for detailed box management
+- Photo uploads for boxes
+- Item management with quantity and tags
+- Smooth animations and transitions
 
-### Installing Node.js
+## 🚀 Quick Start
 
-1. **Windows/Mac**: Download and install from [nodejs.org](https://nodejs.org/)
-   - Choose the LTS (Long Term Support) version
-   - Run the installer and follow the prompts
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm (comes with Node.js)
 
-2. **Verify installation**: Open a terminal/command prompt and run:
+### Installation
+
+1. **Clone or download this repository**
    ```bash
-   node --version
-   npm --version
+   git clone https://github.com/YOUR_USERNAME/basement-inventory.git
+   cd basement-inventory
    ```
-   You should see version numbers for both.
 
-## Installation
-
-1. **Download or clone this project** to a folder on your computer
-
-2. **Open a terminal** in the project folder
-
-3. **Install dependencies**:
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-## Running the Server
-
-1. **Start the server**:
+3. **Start the server**
    ```bash
    npm start
    ```
 
-2. **You'll see output like this**:
-   ```
-   🏠 Basement Inventory Server Started
+4. **Open your browser** to `http://localhost:8080`
 
-   📍 Local access:
-      http://localhost:8080
-      http://127.0.0.1:8080
-
-   🌐 Network access:
-      http://192.168.1.100:8080
-
-   💡 Share the network URL with other devices on your network!
-   ```
-
-3. **Open your browser** and go to `http://localhost:8080`
-
-## Accessing from Other Devices
-
-To access the inventory from other computers, phones, or tablets on your network:
-
-1. **Find your computer's IP address** (shown when you start the server)
-
-2. **On the other device**, open a web browser and go to:
-   ```
-   http://YOUR-IP-ADDRESS:8080
-   ```
-   For example: `http://192.168.1.100:8080`
-
-3. **Make sure**:
-   - Both devices are on the same Wi-Fi network
-   - Your firewall allows port 8080 (Windows may ask for permission)
-
-### Finding Your IP Address
-
-**Windows**:
-```bash
-ipconfig
+You'll see:
 ```
-Look for "IPv4 Address" under your active network adapter.
+🏠 Basement Inventory Server Started
 
-**Mac/Linux**:
-```bash
-ifconfig
+📍 Local access:
+   http://localhost:8080
+   http://127.0.0.1:8080
+
+🌐 Network access:
+   http://192.168.x.x:8080
+
+💡 Share the network URL with other devices on your network!
 ```
-or
-```bash
-ip addr show
-```
-Look for an address like `192.168.x.x` or `10.0.x.x`
 
-## Using the System
+## 📱 Multi-Device Access
 
-### Adding Shelves
-1. Click "➕ Add Shelf" button in the header
-2. Edit the shelf name by clicking on it
-3. Shelves are assigned IDs like SHELF-001, SHELF-002, etc.
+### Accessing from Other Devices
 
-### Adding Boxes
-1. Click "➕ Box" button on any shelf
-2. Click the box to open the details panel
-3. Add a photo if desired
-4. Edit the box description
-5. Boxes are assigned IDs like BOX-001, BOX-002, etc.
+1. **On your server computer**, note the network IP shown when starting the server
+2. **On any other device** (phone, tablet, computer) on the same network:
+   - Open a browser
+   - Navigate to `http://YOUR-SERVER-IP:8080`
+   - Example: `http://192.168.1.100:8080`
 
-### Adding Items
-1. Click on a box to open the details panel
-2. Click "➕ Add Item" button
+### Requirements
+- Both devices must be on the same Wi-Fi/network
+- Firewall must allow port 8080
+- Server computer must be running
+
+## 📖 Usage Guide
+
+### Creating Shelves
+1. Click **"➕ Shelf"** button in the header
+2. A new shelf is created with ID `SHELF-001`, `SHELF-002`, etc.
+3. Click the shelf name to edit it
+4. Click **"🗑️"** to delete a shelf (with confirmation)
+
+### Managing Boxes
+1. Click **"➕ Box"** on any shelf
+2. Click the box card to open the details panel
+3. In the details panel:
+   - View/Edit box description
+   - Upload or remove photos (🗑️ to remove)
+   - Add and manage items
+
+### Working with Items
+1. Open a box to view the details panel
+2. Click **"➕ Add Item"** to create a new item
 3. Fill in item details:
-   - Name
-   - Notes (description)
-   - Quantity
-   - Tags (comma-separated keywords)
-4. Items are assigned IDs like ITEM-001-001, ITEM-001-002, etc.
+   - **Name**: Item description
+   - **Notes**: Additional details
+   - **Quantity**: Number of items
+   - **Tags**: Comma-separated keywords for searching
+4. Click **"🗑️"** to delete an item (with confirmation)
 
 ### Searching
-- **Global Search**: Use the search bar in the header to search across all shelves, boxes, and items
-- **Box Search**: In the details panel, use the item search to filter items within a box
-- Matching items are highlighted in yellow
+- **Global Search**: Header search bar searches across all data
+  - Matches shelves, boxes, and items
+  - Highlights matching results
+- **Item Search**: Details panel search filters items in current box
+- Clear search with the **✖** button
 
-### Exporting Data
-1. Click "📤 Export" button
-2. A JSON file will be downloaded with a timestamp
-3. Store this file as a backup
+### Theme Toggle
+- Click the **🌙/☀️** button in the header
+- Toggle between dark and light themes
+- Preference saved automatically
 
-### Importing Data
-1. Click "📥 Import" button
+### Data Management
+
+#### Exporting Data
+1. Click **"📤 Export"** button
+2. Downloads `inventory-backup-YYYY-MM-DD-HHMMSS.json`
+3. Store safely as backup
+
+#### Importing Data
+1. Click **"📥 Import"** button
 2. Select a previously exported JSON file
-3. Confirm the import (this will replace all current data)
+3. Confirm the import
+   - ⚠️ **Warning**: Replaces all current data
 
-## Data Storage
+## 🗂️ Data Storage
 
-All data is stored in `inventory.json` in the same folder as the server.
-
-### Backup Recommendations
-
-1. **Regular Exports**: Export your data regularly using the Export button
-2. **File Backup**: Copy the `inventory.json` file to a safe location
-3. **Cloud Backup**: Store exports in cloud storage (Google Drive, Dropbox, etc.)
-
-### Manual Backup
-
-You can simply copy the `inventory.json` file:
-```bash
-# Windows
-copy inventory.json inventory-backup-2024-01-15.json
-
-# Mac/Linux
-cp inventory.json inventory-backup-2024-01-15.json
-```
-
-## Troubleshooting
-
-### Server won't start
-- Make sure port 8080 is not already in use
-- Check that you ran `npm install` first
-- Verify Node.js is installed: `node --version`
-
-### Can't access from other devices
-- Verify both devices are on the same network
-- Check firewall settings on the server computer
-- Make sure you're using the correct IP address
-- Try disabling firewall temporarily to test
-
-### Data not saving
-- Check that the server has write permissions in the folder
-- Look for error messages in the server console
-- Try restarting the server
-
-### Photos not uploading
-- Make sure the image file is not too large (recommended < 2MB per photo)
-- Try a different image format (JPG, PNG, GIF all work)
-- Check browser console for errors (F12)
-
-## Limits
-
-- **Maximum boxes**: 1000 boxes
-- **Photo size**: Keep photos under 2MB for best performance
-- **Concurrent users**: Multiple users can view, but be aware that simultaneous edits may cause conflicts
-
-## Stopping the Server
-
-Press `Ctrl+C` in the terminal where the server is running.
-
-## Technical Details
-
-### File Structure
-```
-basement-inventory/
-├── package.json          # Node.js dependencies
-├── server.js             # Express server
-├── index.html            # Frontend UI
-├── inventory.json        # Your data (auto-created)
-└── README.md             # This file
-```
-
-### API Endpoints
-- `GET /api/data` - Retrieve inventory data
-- `POST /api/data` - Save inventory data
+### Storage Location
+All data is stored in `inventory.json` in the project root directory.
 
 ### Data Structure
 ```json
 {
   "shelves": [
-    { "id": "SHELF-001", "name": "Shelf Name" }
+    {
+      "id": "SHELF-001",
+      "name": "Holiday Decorations"
+    }
   ],
   "boxes": [
     {
       "id": "BOX-001",
       "shelfId": "SHELF-001",
-      "description": "Box description",
+      "description": "Christmas Lights",
       "photo": "data:image/jpeg;base64,..."
     }
   ],
@@ -232,19 +169,179 @@ basement-inventory/
     {
       "id": "ITEM-001-001",
       "boxId": "BOX-001",
-      "name": "Item name",
-      "notes": "Item notes",
-      "quantity": 1,
-      "tags": "tag1, tag2"
+      "name": "LED String Lights",
+      "notes": "Multicolor 100-bulb strands",
+      "quantity": 8,
+      "tags": "christmas, lights, led, outdoor"
     }
   ]
 }
 ```
 
-## License
+### Backup Strategies
 
-MIT - Feel free to use and modify as needed!
+**Recommended: Regular Exports**
+- Use the Export button weekly/monthly
+- Store exports in cloud storage (Google Drive, Dropbox, etc.)
 
-## Support
+**Alternative: File Copy**
+```bash
+# Manual backup
+cp inventory.json backups/inventory-$(date +%Y%m%d).json
+```
 
-For issues or questions, check the troubleshooting section above or review the console output for error messages.
+**Version Control**
+- The `inventory.json` can be committed to git if desired
+- Add to `.gitignore` if you want to keep data private
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **HTML5**: Semantic markup
+- **CSS**: Tailwind CSS + DaisyUI components
+- **JavaScript**: Vanilla ES6+
+- **Icons**: Emoji-based icons
+
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Storage**: JSON file system
+
+### No Build Tools Required
+- No webpack, vite, or bundlers needed
+- Direct browser loading via CDN
+- Simple deployment
+
+## ⚙️ Configuration
+
+### Changing Port
+Edit `server.js`:
+```javascript
+const PORT = process.env.PORT || 8080; // Change 8080 to your preferred port
+```
+
+### Data File Location
+Edit `server.js`:
+```javascript
+const DATA_FILE = './inventory.json'; // Change path if needed
+```
+
+## 🐛 Troubleshooting
+
+### Server Issues
+
+**Port already in use**
+```bash
+# Find process using port 8080
+lsof -i :8080        # Mac/Linux
+netstat -ano | findstr :8080   # Windows
+
+# Kill the process or use a different port
+```
+
+**Server won't start**
+- Ensure Node.js is installed: `node --version`
+- Ensure dependencies are installed: `npm install`
+- Check for error messages in console
+
+### Network Access Issues
+
+**Can't connect from other devices**
+- Verify same network (Wi-Fi/LAN)
+- Check firewall settings
+- Ensure correct IP address
+- Try `http://` not `https://`
+
+**Firewall Configuration**
+```bash
+# Windows: Allow port 8080
+netsh advfirewall firewall add rule name="Basement Inventory" dir=in action=allow protocol=TCP localport=8080
+
+# Mac: Firewall should prompt automatically
+```
+
+### Data Issues
+
+**Changes not saving**
+- Check console for errors
+- Verify file write permissions
+- Check disk space
+- Restart server
+
+**Photos not uploading**
+- Ensure file size < 2MB
+- Supported formats: JPG, PNG, GIF
+- Check browser console (F12) for errors
+
+### Performance
+
+**Slow loading with many items**
+- Export data and archive old items
+- Keep photos under 500KB when possible
+- Consider splitting into multiple inventories
+
+## 📊 Limits & Best Practices
+
+### Current Limits
+- **Maximum Boxes**: 1000 per inventory
+- **Photo Size**: < 2MB recommended per photo
+- **Concurrent Users**: Read/write conflicts possible with simultaneous edits
+
+### Best Practices
+- Regular backups via Export
+- Compress photos before upload
+- Use descriptive tags for better search
+- Archive old/unused items periodically
+
+## 🔒 Security Notes
+
+- **Local Network Only**: Server binds to 0.0.0.0, accessible on LAN
+- **No Authentication**: Anyone on network can access
+- **No Encryption**: Data stored in plain JSON
+- **Consider**: Add authentication if exposing beyond local network
+
+## 📁 Project Structure
+
+```
+basement-inventory/
+├── index.html              # Frontend UI
+├── server.js               # Express server
+├── package.json            # Dependencies
+├── package-lock.json       # Dependency lock
+├── inventory.json          # Data storage (auto-created)
+├── .gitignore             # Git ignore rules
+├── README.md              # This file
+└── logs/                  # Session logs (gitignored)
+```
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📜 License
+
+MIT License - see LICENSE file for details
+
+## 🙏 Acknowledgments
+
+- Built with [Express.js](https://expressjs.com/)
+- UI powered by [Tailwind CSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
+- Icons from emoji set
+
+## 📞 Support
+
+- **Issues**: Open a GitHub issue
+- **Questions**: Check troubleshooting section
+- **Feature Requests**: Submit via GitHub issues
+
+---
+
+**Made with ❤️ for organized basements everywhere!**
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
